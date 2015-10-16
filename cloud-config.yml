@@ -1,11 +1,11 @@
 #cloud-config
 
-hostname: macalone
+hostname: etcd1
 
 coreos:
   etcd:
-    addr: 192.168.1.14:2375
-    peer-addr: 192.168.1.14:7001
+    addr: 192.168.122.10:2375
+    peer-addr: 192.168.1.10:7001
   units:
     - name: etcd.service
       command: start
@@ -14,11 +14,11 @@ coreos:
     - name: static.network
       content: |
         [Match]
-        Name=vlan0
+        Name=eth0
 
         [Network]
-        Address=10.10.100.10/24
-        Gateway=10.10.100.1
+        Address=192.168.122.10/24
+        Gateway=192.168.122.1
         DNS=8.8.8.4
         DNS=8.8.8.8
 users:
